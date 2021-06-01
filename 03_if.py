@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*
+# -*- coding: utf-8 -*-
 print('---------if---------')
 #age = int(input('age:'))
 age = 3
@@ -21,11 +21,11 @@ print('bmi {0:.1f}'.format(bmi))
 print(f'bmi {bmi:.1f}')
 if bmi<18.5:
     print('too light')
-if 18.5 < bmi < 25:
+elif 18.5 < bmi < 25:
     print('normal')
-if 25 < bmi <28:
+elif 25 < bmi <28:
     print('too weight')
-if 28 < bmi <32:
+elif 28 < bmi <32:
     print('fat')
-if bmi > 32:
+elif bmi > 32:
     print('too fat')
