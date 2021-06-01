@@ -32,6 +32,7 @@ s2 = 85
 name = 'xiaoming'
 r = (s2-s1)/s1*100
 
-print(f'hi, {name} you score high {r:.2f}% than before year')
-print('小明的成绩提升了:{0:.1f}%'.format(r))
 print('小明成绩提升了：%.1f %%' % r)
+print('小明的成绩提升了:{0:.1f}%'.format(r))
+print(f'hi, {name} you score high {r:.2f}% than before year')
+
