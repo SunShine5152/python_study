@@ -79,7 +79,7 @@ add_end()
 print(add_end([]))
 print(add_end([]))
 print(add_end([]))
-print('-------function:函数参数:可变参数-----------')
+print('-------function:函数参数:可变参数,其实就是一个tuple-----------')
 def calc(numbers):
     sum = 0
     for n in numbers:
@@ -169,3 +169,13 @@ else:
         print('测试失败5!')
     except TypeError:
         print('测试成功6!')
+print('-------function:递归函数-----------')
+def fact(n):
+    if n==1:
+        return 1
+    return n * fact(n-1)
+
+print(fact(1))
+print(fact(5))
+print(fact(123))
+
