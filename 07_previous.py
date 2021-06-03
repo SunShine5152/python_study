@@ -110,3 +110,149 @@ elif findMinAndMax([7, 1, 3, 9, 5]) != (1, 9):
     print('测试失败!')
 else:
     print('测试成功!')
+
+print('************ List Comprehensions:列表生成式***************')
+print(list(range(2,11)))
+
+L = []
+for x in range(1,11):
+    L.append(x * x)
+print(L)
+#也可以用下面一句话替换
+print([x*x for x in range(1,11)])
+#也可以加上判断，筛选出偶数的平方
+print([x*x for x in range(1,11) if x % 2 == 0])
+#还可以使用两层循环，可以生成全排列
+print([m+n for m in 'ABC' for n in 'XYZ'])
+
+#列出当前所有的文件夹
+import os
+print([d for d in os.listdir('.')])
+#列表生成式也可以使用两个变量来生成list
+d = {'x':'A','y':'B','z':'C'}
+print([k + '=' + v for k, v in d.items()])
+#把一个list中的所有字符串变成小写
+L = ['Hello', 'World', 'IBM', 'Apple']
+print([s.lower() for s in L])
+print([x if x % 2 == 0 else -x for x in range(1,11)])
+
+# print('***********习题**************')
+# L1 = ['Hello', 'World', 18, 'Apple', None]
+# L2 = [x.lower() for x in L1 if isinstance(x,str)]
+# print(L2)
+# if L2 == ['hello', 'world', 'apple']:
+#     print('测试通过!')#不知为何这段必须放在其他文件可以通过，本文件报错。
+# else:
+#     print('测试失败!')
+
+print('***********列表生成器**************')
+L = [x for x in range(10)]
+print(L)
+g = (x for x in range(10))
+print(next(g))
+print(next(g))
+print(next(g))
+print('***********for**************')
+for x in g:
+    print(x)
+print('***fib***')
+def fib(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        print(b)
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+print(fib(6))
+#yield 调试
+def foo():
+    print("starting...")
+    while True:
+        res = yield 4
+        print("res:",res)
+g = foo()
+print(next(g))
+print("*"*20)
+print(next(g))
+print(next(g))
+print(next(g))
+
+#send方法debug
+def foo():
+    print("starting...")
+    while True:
+        res = yield 4
+        print("res:",res)
+g = foo()
+print(next(g))
+print("*"*20)
+print(g.send(7))
+print(next(g))
+print(next(g))
+print(g.send(6))
+
+for n in range(11):
+    a=n
+    print(a)
+
+def foo(num):
+    print("starting111...")
+    while num<10:
+        num=num+1
+        yield num
+for n in foo(0):
+    print(n)
+
+#斐波拉契数列生成器
+print('***fib gnerator***')
+def fib(max):
+    n,a,b = 0,0,1
+    while n < max:
+        yield b
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+g = fib(6)
+#用生成器打印fib列表并拿到fib(max)的return值done
+def print_g():
+    while True:
+        try:
+            x = next(g)
+            print('g:', x)
+        except StopIteration as e:
+            print('Generator return value:', e.value)
+            break
+print_g()
+print('***yanghui sanjiao ****')
+def triangles():
+    L =[1]
+    while True:
+        yield L[:]
+        L.append(0)
+        L=[L[i]+L[i-1] for i in range(len(L))]
+n = 0
+results = []
+for t in triangles():
+    results.append(t)
+    n = n + 1
+    if n == 10:
+        break
+
+for t in results:
+    print(t)
+
+if results == [
+    [1],
+    [1, 1],
+    [1, 2, 1],
+    [1, 3, 3, 1],
+    [1, 4, 6, 4, 1],
+    [1, 5, 10, 10, 5, 1],
+    [1, 6, 15, 20, 15, 6, 1],
+    [1, 7, 21, 35, 35, 21, 7, 1],
+    [1, 8, 28, 56, 70, 56, 28, 8, 1],
+    [1, 9, 36, 84, 126, 126, 84, 36, 9, 1]
+]:
+    print('测试通过!')
+else:
+    print('测试失败!')
