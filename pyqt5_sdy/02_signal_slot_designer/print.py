@@ -39,7 +39,7 @@ class MyMainWindow(QMainWindow, Ui_Form):
         pList = [ ]
         pList.append(self.numberSpinBox.value())
         pList.append(self.styleCombo.currentText())
-        print('***111222****')
+        print('***111****')
         self.printSignal.emit(pList)
         print('***222***')
         for i in pList:
